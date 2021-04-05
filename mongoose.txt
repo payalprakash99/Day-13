@@ -1,0 +1,84 @@
+Prerequisites: MongoDB and NodeJS
+
+------------------------------------
+
+npm install mongoose --save
+
+---------------------------------------
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true, useUnifiedTopology: true});
+
+
+---------------------------------------
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+});
+
+-------------------------------------------
+
+const HedwigSchema = new mongoose.Schema({
+  name: String
+});
+
+-----------------------------------------
+
+const Hedwig = mongoose.model('Hedwig the owl', HedwigSchema);
+
+------------------------------------------
+
+const silence = new Hedwig({ name: 'HPowl' });
+console.log(HPowl.name); // 'Silence'
+
+-------------------------------------------
+HedwigSchema.methods.speak = function () {
+  const greeting = this.name
+    ? "Her name is " + this.name
+    : "Great to have you in Hogwarts";
+  console.log(greeting);
+}
+
+const Hedwig= mongoose.model('Hedwig the owl', HedwigSchema);
+
+------------------------------------------------
+
+Hedwig.find({ name: Jr.Hedwig }, callback);
+
+
+----------------------------------------------------
+
+Model.deleteMany()
+Model.deleteOne()
+Model.find()
+Model.findById()
+Model.findByIdAndDelete()
+Model.findByIdAndRemove()
+Model.findByIdAndUpdate()
+Model.findOne()
+Model.findOneAndDelete()
+Model.findOneAndRemove()
+Model.findOneAndReplace()
+Model.findOneAndUpdate()
+Model.replaceOne()
+Model.updateMany()
+Model.updateOne()
+
+-----------------------------------------------------
+
+await Harry.deleteMany({ name: /Ginny/, age: { $gte: 15 } });
+await Harry.deleteOne({ name: 'Fiona' });
+await Harry.create({ name: 'George' });
+await Jobs.findById(id, 'name length').exec();
+
+-----------------------------------------------------
+const numAdventures = Harry.estimatedDocumentCount();
+
+-----------------------------------------
+
+Model.findById(id, function (err, doc) {
+  if (err) ..
+  doc.name = 'jason';
+  doc.save(callback);
+});
